@@ -1,0 +1,396 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  background-color: rgb(199, 212, 221);
+}
+.judul {
+  background-color: rgba(50, 85, 150, 0.801);
+  backdrop-filter: blur(80px);
+  padding: 10px 70px;
+  box-shadow: var(--shadow);
+}
+
+.judul h1 {
+  text-align: center;
+  color: white;
+  font-size: 2.8rem;
+}
+
+.input_section {
+  width: 900px;
+  display: block;
+  margin: 20px auto;
+  border-radius: 16px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
+}
+.input_section h2 {
+  font-size: 1.8rem;
+  color: rgb(80, 80, 80);
+  text-align: center;
+}
+
+#inputBook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.input input {
+  width: 500px;
+  font-family: "Lexend Deca", sans-serif;
+  background: white;
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  border: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  font-size: 17px;
+}
+.input input::placeholder {
+  color: rgba(128, 128, 128, 0.5);
+}
+
+.button-submit {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+}
+.button-submit button[type="submit"] {
+  width: 100%;
+  margin: 16px;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: rgba(50, 85, 150, 0.801);
+  border: 0;
+  color: white;
+  box-shadow: var(--shadow);
+  font-size: 1.3rem;
+}
+
+button[type="submit"]:hover {
+  scale: 0.95;
+  cursor: pointer;
+}
+
+.jumlah-buku {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+}
+.jumlah-buku h3 {
+  color: grey;
+  text-align: center;
+}
+#jumlah-buku {
+  font-size: 2rem;
+}
+
+.cari-buku {
+  width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(08px);
+}
+.cari-buku h2 {
+  text-align: center;
+  color: rgb(80, 80, 80);
+}
+.cari-buku form {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+.cari-buku form input[type="text"] {
+  font-size: 1.4rem;
+  width: 70%;
+  padding-left: 20px;
+  border-radius: 10px;
+  border: 2px solid white;
+  background-color: white;
+  box-shadow: var(--shadow);
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3),
+    /* Bayangan gelap di kanan bawah */ -1px -1px 0px rgba(255, 255, 255, 0.3); /* Bayangan terang di kiri atas */
+}
+.cari-buku form input[type="text"]::placeholder {
+  font-size: 1.4rem;
+  color: rgba(128, 128, 128, 0.5);
+}
+.cari-buku form button[type="button"] {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  margin: 0 20px;
+  padding: 8px;
+  font-size: 1.4rem;
+  text-align: center;
+  background-color: rgba(53, 96, 175, 0.8);
+  color: white;
+  border-radius: 10px;
+  border: none;
+  box-shadow: var(--shadow);
+}
+.cari-buku form button[type="button"]:hover {
+  scale: 0.95;
+  cursor: pointer;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  width: 900px;
+  border-radius: 16px;
+  padding: 16px;
+  height: fit-content;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+.content-header {
+  text-align: center;
+}
+.container .content {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  height: fit-content;
+  color: rgb(80, 80, 80);
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(80px);
+  box-shadow: var(--shadow);
+  border-radius: 10px;
+  padding: 16px;
+  margin: 16px;
+}
+
+.item {
+  border-radius: 10px;
+  margin-top: 16px;
+  padding: 7px 15px 7px 15px;
+  background: white;
+  display: flex;
+  align-items: center;
+}
+.check-button {
+  width: 40px;
+  height: 40px;
+  background: url("assets/check-outline.svg");
+  background-size: contain;
+  margin-left: auto;
+  cursor: pointer;
+  border: none;
+}
+.check-button:hover {
+  background: url(assets/check-solid.svg);
+  transition: 0.3s;
+}
+
+.trash-button {
+  width: 40px;
+  height: 40px;
+  background: url("assets/trash-outline.svg");
+  background-size: contain;
+  margin-left: 16px;
+  cursor: pointer;
+  border: none;
+}
+.trash-button:hover {
+  background: url(assets/trash-fill.svg);
+  transition: 0.3s;
+}
+
+.undo-button {
+  width: 40px;
+  height: 40px;
+  background: url("assets/undo-ouline.svg");
+  background-size: contain;
+  margin-left: auto;
+  cursor: pointer;
+  border: none;
+  transition: 0.4s;
+}
+.undo-button:hover {
+  transform: rotate(-360deg);
+}
+.shadow {
+  box-shadow: var(--shadow);
+}
+
+#popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(24, 24, 24, 0.247);
+  transition: 3s all !important;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-open {
+  display: flex !important;
+  transition: 3s all !important;
+}
+.main {
+  width: 200px;
+  height: 240px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 1px 5px rgb(0 0 0/0.2);
+}
+#text-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  text-align: center;
+  overflow: auto;
+  background-color: rgb(255, 255, 255);
+}
+
+.button-confirmation {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+  color: white;
+}
+.button-confirmation button {
+  width: 200px;
+  padding: 10px;
+  margin: 0 15px;
+  border-radius: 18px;
+  color: rgb(255, 255, 255);
+  background-color: rgba(50, 85, 150, 0.801);
+  box-shadow: var(--shadow);
+  border: 0;
+}
+.button-confirmation button:hover {
+  transform: scale(1.1);
+}
+.button-confirmation button[type="reset"] {
+  box-sizing: border-box;
+  color: rgba(50, 85, 150, 0.801);
+  background-color: white;
+  border: 1px solid rgba(50, 85, 150, 0.801);
+}
+
+.hide {
+  display: none;
+}
+
+/* media querry */
+
+/* laptop */
+@media screen and (max-width: 992px) {
+  html {
+    font-size: 80%;
+  }
+  .input_section {
+    width: 90%;
+  }
+  .input input {
+    max-width: 400px;
+  }
+  .cari-buku {
+    width: 90%;
+  }
+  .container {
+    width: 90%;
+  }
+}
+
+/* tablet */
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 75%;
+  }
+  .input_section {
+    width: 80%;
+  }
+  .input input {
+    max-width: 300px;
+  }
+  .cari-buku {
+    width: 80%;
+  }
+  .container {
+    width: 80%;
+  }
+  .check-button {
+    width: 30px;
+    height: 30px;
+  }
+  .trash-button {
+    width: 35px;
+    height: 35px;
+  }
+  .undo-button {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* mobile phone */
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 62%;
+  }
+  .input_section {
+    width: 70%;
+  }
+  .input input {
+    max-width: 200px;
+  }
+  .cari-buku {
+    width: 70%;
+  }
+  .container {
+    margin: 0 auto;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%; /* Sesuaikan lebar penuh pada layar ponsel */
+  }
+
+  .container .content {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    width: 90%; /* Sesuaikan lebar penuh pada layar ponsel */
+  }
+  .check-button {
+    width: 30px;
+    height: 30px;
+  }
+  .trash-button {
+    width: 30px;
+    height: 30px;
+  }
+  .undo-button {
+    width: 30px;
+    height: 30px;
+  }
+}

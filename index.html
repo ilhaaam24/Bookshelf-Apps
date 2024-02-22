@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf Apps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600;700&display=swap"
+      rel="stylesheet" />
+
+    <!-- feathericons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- my style -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="judul">
+      <h1>Bookshelf Apps</h1>
+    </header>
+
+    <section class="input_section">
+      <h2>Masukkan Buku Baru</h2>
+      <div class="form">
+        <form id="inputBook">
+          <div class="input">
+            <label for="inputBookTitle" place></label>
+            <input id="title" type="text" placeholder="Judul" required />
+          </div>
+          <div class="input">
+            <label for="inputBookAuthor"></label>
+            <input id="author" type="text" placeholder="Penulis" required />
+          </div>
+          <div class="input">
+            <input id="year" type="date" required />
+          </div>
+          <div class="button-submit">
+            <button type="submit" class="btn-submit" id="btn-submit">
+              Submit
+            </button>
+          </div>
+          <div class="jumlah-buku">
+            <h3>Jumlah Buku :</h3>
+            <h3 id="jumlah-buku"></h3>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section class="cari-buku">
+      <h2>Cari Buku</h2>
+      <form action="">
+        <input class="" type="text" id="cari-buku" placeholder="" />
+        <button type="button" id="">Cari</button>
+      </form>
+    </section>
+    <section class="container">
+      <div class="content">
+        <h2 class="content-header">Belum Dibaca :</h2>
+
+        <div class="book-list" id="books"></div>
+      </div>
+      <div class="content">
+        <h2 class="content-header">Sudah Dibaca :</h2>
+
+        <div class="book-list" id="books-item"></div>
+      </div>
+    </section>
+
+   <section id="popup">
+    <div class="main">
+     <p id="text-dialog"></p>
+      <div class="button-confirmation">
+        <button type="submit"  id="save">Ok</button>
+        <button type="reset" class="close" id="close">Cancel</button>
+
+
+      </div>
+      </form>
+    </div>
+   </section>
+
+    <script>
+      feather.replace();
+    </script>
+    <script src="main.js"></script>
+  </body>
+</html>
