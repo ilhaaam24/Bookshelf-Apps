@@ -6,10 +6,23 @@
 body {
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
-  background:linear-gradient(45deg, hsl(186, 100%, 79%), #285688); ;
+  background:linear-gradient(225deg, hsl(207, 79%, 53%), #98abff); ;
+}
+.circle{
+  display: none;
+  height: 700px;
+  width: 700px;
+  border-radius: 50%;
+  background-color: rgba(97, 186, 255, 0.713);
+  box-shadow: 0 0 30px rgb(193, 244, 255);
+  position: absolute;
+  top: 2%;
+  right: 3%;
+  filter: blur(15px);
+  z-index: -1;
 }
 .judul {
-  background-color: rgba(50, 85, 150, 0.801);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(80px);
   padding: 10px 70px;
 }
@@ -24,7 +37,7 @@ body {
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
   width: 900px;
   display: block;
-  margin: 20px auto;
+  margin: 50px auto;
   border: 1px solid #ffffff78;
   border-radius: 16px;
   padding: 20px;
@@ -34,7 +47,7 @@ body {
 }
 .input_section h2 {
   font-size: 1.8rem;
-  color: rgb(80, 80, 80);
+  color: #fff;
   text-align: center;
 }
 
@@ -74,6 +87,9 @@ body {
 .input input::placeholder {
   color: rgba(128, 128, 128, 0.5);
 }
+.input input:focus {
+  outline: none;
+}
 .radioBtn label {
   font-weight: 600;
   font-size: 1.2rem;
@@ -103,7 +119,7 @@ body {
   margin: 16px;
   border-radius: 8px;
   padding: 10px;
-  background-color: rgba(50, 85, 150, 0.801);
+  background-color: rgba(37, 136, 198, 0.801);
   border: 0;
   color: white;
   box-shadow: var(--shadow);
@@ -135,11 +151,12 @@ button[type="submit"]:hover {
 }
 
 .cari-buku {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+  border: 1px solid #ffffff78;
   width: 900px;
   margin: 20px auto;
   padding: 20px;
   border-radius: 16px;
-  box-shadow: var(--shadow);
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(08px);
 }
@@ -167,6 +184,9 @@ button[type="submit"]:hover {
   font-size: 1.4rem;
   color: rgba(128, 128, 128, 0.5);
 }
+.cari-buku form input[type="text"]:focus {
+  outline: none;
+}
 .cari-buku form button[type="button"] {
   width: 20%;
   display: flex;
@@ -175,14 +195,15 @@ button[type="submit"]:hover {
   padding: 8px;
   font-size: 1.4rem;
   text-align: center;
-  background-color: rgba(53, 96, 175, 0.8);
+  background-color: rgba(37, 136, 198, 0.801);
+  
   color: white;
   border-radius: 10px;
   border: none;
   box-shadow: var(--shadow);
 }
 .cari-buku form button[type="button"]:hover {
-  scale: 0.95;
+  scale: 1.02;
   cursor: pointer;
 }
 
@@ -201,14 +222,15 @@ button[type="submit"]:hover {
   text-align: center;
 }
 .container .content {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+  border: 1px solid #ffffff78;
   display: flex;
   flex-direction: column;
   width: 30vw;
   height: fit-content;
-  color: rgb(80, 80, 80);
+  color: #fff;
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(80px);
-  box-shadow: var(--shadow);
   border-radius: 10px;
   padding: 16px;
   margin: 16px;
