@@ -6,9 +6,7 @@
     <title>Bookshelf Apps</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600;700&display=swap"
-      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600;700&display=swap" rel="stylesheet" />
 
     <!-- feathericons -->
     <script src="https://unpkg.com/feather-icons"></script>
@@ -26,20 +24,35 @@
       <div class="form">
         <form id="inputBook">
           <div class="input">
-            <label for="inputBookTitle" place></label>
-            <input id="title" type="text" placeholder="Judul" required />
+            <input id="name" type="text" placeholder="Name" required />
           </div>
           <div class="input">
-            <label for="inputBookAuthor"></label>
-            <input id="author" type="text" placeholder="Penulis" required />
+            <input id="author" type="text" placeholder="Author" required />
+          </div>
+          <div class="input">
+            <input id="ummary" type="text" placeholder="Summary" required />
+          </div>
+          <div class="input">
+            <input id="publisher" type="text" placeholder="Publisher" required />
+          </div>
+          <div class="input">
+            <input id="pageCount" type="text" placeholder="Page Count" required />
+          </div>
+          <div class="input">
+            <input id="readPage" type="text" placeholder="Read Page" required />
           </div>
           <div class="input">
             <input id="year" type="date" required />
           </div>
+          <div class="input">
+            <label>Reading:</label>
+            <label for="readingYes">Yes</label>
+            <input id="readingYes" name="reading" type="radio" value="yes" required />
+            <label for="readingNo">No</label>
+            <input id="readingNo" name="reading" type="radio" value="no" required />
+          </div>
           <div class="button-submit">
-            <button type="submit" class="btn-submit" id="btn-submit">
-              Submit
-            </button>
+            <button type="submit" class="btn-submit" id="btn-submit">Submit</button>
           </div>
           <div class="jumlah-buku">
             <h3>Jumlah Buku :</h3>
@@ -58,29 +71,22 @@
     <section class="container">
       <div class="content">
         <h2 class="content-header">Belum Dibaca :</h2>
-
         <div class="book-list" id="books"></div>
       </div>
       <div class="content">
         <h2 class="content-header">Sudah Dibaca :</h2>
-
         <div class="book-list" id="books-item"></div>
       </div>
     </section>
-
-   <section id="popup">
-    <div class="main">
-     <p id="text-dialog"></p>
-      <div class="button-confirmation">
-        <button type="submit"  id="save">Ok</button>
-        <button type="reset" class="close" id="close">Cancel</button>
-
-
+    <section id="popup">
+      <div class="main">
+        <p id="text-dialog"></p>
+        <div class="button-confirmation">
+          <button type="submit" id="save">Ok</button>
+          <button type="reset" class="close" id="close">Cancel</button>
+        </div>
       </div>
-      </form>
-    </div>
-   </section>
-
+    </section>
     <script>
       feather.replace();
     </script>
