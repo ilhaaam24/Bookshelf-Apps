@@ -162,7 +162,7 @@ button[type="submit"]:hover {
 }
 .cari-buku h2 {
   text-align: center;
-  color: rgb(80, 80, 80);
+  color: #fff;
 }
 .cari-buku form {
   width: 100%;
