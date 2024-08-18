@@ -6,7 +6,7 @@
 body {
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
-  background-color: rgb(199, 212, 221);
+  background: ;
 }
 .judul {
   background-color: rgba(50, 85, 150, 0.801);
@@ -41,12 +41,15 @@ body {
 #inputBook {
   display: flex;
   flex-direction: column;
+  row-gap: 10px;
   align-items: center;
   margin-top: 10px;
   color: #fff;
 }
-.input{
+.input {
   display: flex;
+  align-items: center;
+  justify-content: center;
   column-gap: 20px;
 }
 
@@ -62,19 +65,32 @@ body {
   margin-bottom: 10px;
   font-size: 17px;
 }
+.radioBtn{
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+  column-gap: 30px;
+}
 .input input::placeholder {
   color: rgba(128, 128, 128, 0.5);
 }
-.input label{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.radioBtn label {
+  font-weight: 600;
+  font-size: 1.2rem;
   color: #555;
 }
-.input label input[type="radio"] {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
+.radioBtn .value {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
+.radioBtn .value h3{
+  font-size: 1.2rem;
+  color: #555;
+}
+.radioBtn .value input[type="radio"] {
+  width: 30px;
+  height: 30px;
 }
 
 .button-submit {
@@ -145,8 +161,7 @@ button[type="submit"]:hover {
   border: 2px solid white;
   background-color: white;
   box-shadow: var(--shadow);
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3),
-    /* Bayangan gelap di kanan bawah */ -1px -1px 0px rgba(255, 255, 255, 0.3); /* Bayangan terang di kiri atas */
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3), /* Bayangan gelap di kanan bawah */ -1px -1px 0px rgba(255, 255, 255, 0.3); /* Bayangan terang di kiri atas */
 }
 .cari-buku form input[type="text"]::placeholder {
   font-size: 1.4rem;
