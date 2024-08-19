@@ -30,16 +30,16 @@
             <input id="author" type="text" placeholder="Author" required />
           </div>
           <div class="input">
-            <input id="ummary" type="text" placeholder="Summary" required />
+            <input id="summary" type="text" placeholder="Summary" required />
           </div>
           <div class="input">
             <input id="publisher" type="text" placeholder="Publisher" required />
           </div>
           <div class="input">
-            <input id="pageCount" type="text" placeholder="Page Count" required />
+            <input id="pageCount" type="number" placeholder="Page Count" required />
           </div>
           <div class="input">
-            <input id="readPage" type="text" placeholder="Read Page" required />
+            <input id="readPage" type="number" placeholder="Read Page" required />
           </div>
           <div class="input">
             <input id="year" type="date" required />
@@ -48,15 +48,15 @@
             <label>Reading:</label>
             <div class="value">
               <h3>Yes</h3>
-              <input id="readingYes" name="reading" type="radio" value="yes" required />
+              <input id="readingYes" name="reading"  type="radio"  required  />
             </div>
             <div class="value">
               <h3>No</h3>
-              <input id="readingNo" name="reading" type="radio" value="no" required />
+              <input id="readingNo"  name="reading" type="radio" required   />
             </div>
           </div>
           <div class="button-submit">
-            <button type="submit" class="btn-submit" id="btn-submit">Submit</button>
+            <button type="submit" class="btn-submit" id="btn-submit" onsubmit="print()">Submit</button>
           </div>
           <div class="jumlah-buku">
             <h3>Jumlah Buku :</h3>
