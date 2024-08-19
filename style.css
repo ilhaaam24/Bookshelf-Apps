@@ -106,6 +106,9 @@ body {
   width: 30px;
   height: 30px;
 }
+.radioBtn .value input[type="radio"]:checked{
+  accent-color: rgba(37, 136, 198, 0.801);
+}
 
 .button-submit {
   display: flex;
