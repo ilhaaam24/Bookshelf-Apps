@@ -49,9 +49,6 @@ function saveData() {
     document.dispatchEvent(new Event(SAVED_EVENT));
   }
 }
-function generateId() {
-  return +new Date();
-}
 
 function addBook() {
   const name = document.getElementById('name').value;
@@ -61,18 +58,28 @@ function addBook() {
   const pageCount = document.getElementById('pageCount').value;
   const readCount = document.getElementById('readPage').value;
   const year = document.getElementById('year').value;
-  const isComplete = document.getElementById('readingYes').checked;
-  const notComplete = document.getElementById('readingNo').checked;
+  const isComplete = document.getElementById('readingYes');
+  const notComplete = document.getElementById('readingNo');
+  let reading = false;
+  console.log(name, author, summary, publisher, pageCount, readCount, year, reading);
+
+  if(isComplete.checked){
+    reading = true;
+  }else if(notComplete.checked){
+    reading = false;
+  }
   
   
   
-  const generatedID = generateId();
   const newBook = generateNewBook(
-    generatedID,
-    inputTitle,
-    inputAuthor,
-    inputYear,
-    false
+    name,
+    author,
+    summary,
+    publisher,
+    pageCount,
+    readCount,
+    year,
+    reading,
     );
     BOOKS.push(newBook);
     document.dispatchEvent(new Event(CHANGE_EVENT));
@@ -137,13 +144,16 @@ function undoBookFromCompleted(bookId) {
   saveData();
 }
 
-function generateNewBook(id, title, author, year, isComplete) {
+function generateNewBook(name, author, summary, publisher, pageCount, readCount, year, reading) {
   return {
-    id,
-    title,
+    name,
     author,
+    summary,
+    publisher,
+    pageCount,
+    readCount,
     year,
-    isComplete,
+    reading,
   };
 }
 //fungsi menghitung jumlah buku yang tersimpan
@@ -300,27 +310,3 @@ document.addEventListener(CHANGE_EVENT, function () {
 document.addEventListener(SAVED_EVENT, function () {
   console.log(localStorage.getItem(STORAGE_KEY));
 });
-
-
-const submitForm = document.getElementById("inputBook");
-submitForm.addEventListener('submit', function (event) {
-  const nama = document.getElementById('name').value;
-  const author = document.getElementById('author').value;
-  const summary = document.getElementById('summary').value;
-  const publisher = document.getElementById('publisher').value;
-  const pageCount = document.getElementById('pageCount').value;
-  const readCount = document.getElementById('readPage').value;
-  const year = document.getElementById('year').value;
-  const isComplete = document.getElementById('readingYes');
-  const notComplete = document.getElementById('readingNo');
-  let reading = false;
-
-  if(isComplete.checked) {
-    reading = true;
-  } else  if(notComplete.checked) {
-    reading = false;
-  } 
-  event.preventDefault();
-  console.log(nama, author, summary, publisher, pageCount,readCount, year, reading);
-  console.log('halooo')
-})
