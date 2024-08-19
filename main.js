@@ -184,16 +184,18 @@ function cariBuku() {
 
 //fungsi membuat list buku
 function makeBook(newBook) {
-  const titleBook = document.createElement("h2");
-  titleBook.innerText = newBook.title;
+  const nameBook = document.createElement("h2");
+  nameBook.innerText = newBook.name;
   const authorBook = document.createElement("p");
   authorBook.innerText = newBook.author;
+  const summaryBook = document.createElement("p");
+  summaryBook.innerText = newBook.summary;
   const yearBook = document.createElement("p");
   yearBook.innerText = newBook.year;
   
   const textContainer = document.createElement("div");
   
-  textContainer.append(titleBook, authorBook, yearBook);
+  textContainer.append(nameBook, authorBook, summaryBook,yearBook);
   
   const container = document.createElement("div");
   container.append(textContainer);

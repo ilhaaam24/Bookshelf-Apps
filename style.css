@@ -135,6 +135,7 @@ button[type="submit"]:hover {
   align-items: center;
   width: 200px;
   margin-top: 20px;
+  padding: 10px 0;
   border-radius: 10px;
   border: 1px solid #555;
   box-shadow: var(--shadow);
@@ -157,6 +158,7 @@ button[type="submit"]:hover {
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(08px);
 }
+
 .cari-buku h2 {
   text-align: center;
   color: #555;
@@ -164,13 +166,13 @@ button[type="submit"]:hover {
 .cari-buku form {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  column-gap: 20px;
   padding: 10px;
 }
 .cari-buku form input[type="text"] {
+  flex: 2;
   font-size: 1.4rem;
-  width: 70%;
-  padding-left: 20px;
   border-radius: 10px;
   border: 1px solid #555;
   box-shadow: var(--shadow);
@@ -184,10 +186,9 @@ button[type="submit"]:hover {
   outline: none;
 }
 .cari-buku form button[type="button"] {
-  width: 20%;
+  width: 150px;
   display: flex;
   justify-content: center;
-  margin: 0 20px;
   padding: 8px;
   font-size: 1.4rem;
   text-align: center;
@@ -232,6 +233,7 @@ button[type="submit"]:hover {
 }
 
 .item {
+  border: 1px solid #000dff;
   border-radius: 10px;
   margin-top: 16px;
   padding: 7px 15px 7px 15px;
@@ -303,8 +305,7 @@ button[type="submit"]:hover {
   transition: 3s all !important;
 }
 .main {
-  width: 200px;
-  height: 240px;
+  width: 300px;
   background-color: white;
   border-radius: 10px;
   padding: 25px;
