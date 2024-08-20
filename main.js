@@ -342,3 +342,20 @@ submitForm.addEventListener('submit', function (event) {
 // document.addEventListener(SAVED_EVENT, function () {
 //   console.log(localStorage.getItem(STORAGE_KEY));
 // });
+
+async function deleteBook(){
+
+  try {
+    const response = await fetch("http://localhost:9000/books/jcy1xROz5m", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error); 
+
+  }
+}
