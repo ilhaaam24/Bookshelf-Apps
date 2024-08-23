@@ -134,6 +134,7 @@ button[type="submit"]:hover {
 }
 
 .jumlah-buku {
+  display: flex;
   flex-direction: column;
   align-items: center;
   width: 200px;
