@@ -121,7 +121,7 @@ body {
   margin: 16px;
   border-radius: 8px;
   padding: 10px;
-  background-color: rgba(37, 136, 198, 0.801);
+  background-color: rgb(0, 115, 255);
   border: 0;
   color: white;
   box-shadow: var(--shadow);
