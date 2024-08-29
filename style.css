@@ -167,7 +167,7 @@ button[type="submit"]:hover {
   text-align: center;
   color: #555;
 }
-.cari-buku for {
+.cari-buku form {
   width: 100%;
   display: flex;
   justify-content: center;
