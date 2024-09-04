@@ -41,7 +41,7 @@ body {
   border: 1px solid #2b2b2b;
   border-radius: 16px;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgb(255, 255, 255);
   color: white;
   backdrop-filter: blur(8px);
 }
