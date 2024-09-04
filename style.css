@@ -160,7 +160,7 @@ button[type="submit"]:hover {
   margin: 20px auto;
   padding: 20px;
   border-radius: 16px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgb(255, 255, 255);
   backdrop-filter: blur(08px);
 }
 
