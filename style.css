@@ -231,7 +231,7 @@ button[type="submit"]:hover {
   width: 30vw;
   height: fit-content;
   color: #555;
-  background-color: rgba(255, 255, 255, 0.493);
+  background-color: rgb(255, 255, 255);
   backdrop-filter: blur(80px);
   border-radius: 10px;
   padding: 16px;
