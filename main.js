@@ -9,9 +9,7 @@
  *    }
  * ]
  */
-const api_url = 'http://localhost:9000/books';
-
-const BOOKS = [];
+const api_url = "http://localhost:9000/books";
 const STORAGE_KEY = "BOOKS_APPS";
 const SAVED_EVENT = "SAVED-BOOKS";
 const CHANGE_EVENT = "CHANGE_BOOKS";
@@ -22,73 +20,62 @@ const textDialog = document.getElementById("text-dialog");
 const judulBuku = document.getElementById("cari-buku");
 
 const submitForm = document.getElementById("inputBook");
-submitForm.addEventListener('submit', function (event) {
-   const name = document.getElementById("name").value;
-   const author = document.getElementById("author").value;
-   const summary = document.getElementById("summary").value;
-   const publisher = document.getElementById("publisher").value;
-   const pageCount = document.getElementById("pageCount").value;
-   const readPage = document.getElementById("readPage").value;
-   const year = document.getElementById("year").value;
-   const isComplete = document.getElementById("readingYes");
-   const notComplete = document.getElementById("readingNo");
-   let reading = false;
-   console.log(name, author, summary, publisher, pageCount, readPage, year, reading);
+submitForm.addEventListener("submit", function (event) {
+  const name = document.getElementById("name").value;
+  const author = document.getElementById("author").value;
+  const summary = document.getElementById("summary").value;
+  const publisher = document.getElementById("publisher").value;
+  const pageCount = document.getElementById("pageCount").value;
+  const readPage = document.getElementById("readPage").value;
+  const year = document.getElementById("year").value;
+  const isComplete = document.getElementById("readingYes");
+  const notComplete = document.getElementById("readingNo");
+  let reading = false;
+  console.log(name, author, summary, publisher, pageCount, readPage, year, reading);
 
-   if (isComplete.checked) {
-     reading = true;
-   } else if (notComplete.checked) {
-     reading = false;
-   }
-   const newBook ={
-     name,
-     author,
-     summary,
-     publisher,
-     pageCount,
-     readPage,
-     year,
-     reading,
-   }
+  if (isComplete.checked) {
+    reading = true;
+  } else if (notComplete.checked) {
+    reading = false;
+  }
+  const newBook = {
+    name,
+    author,
+    summary,
+    publisher,
+    pageCount,
+    readPage,
+    year,
+    reading,
+  };
 
   event.preventDefault();
-  fetch('http://localhost:9000/books', {
-    method: 'POST',
-    headers:{
-      'Content-Type': 'application/json'
+  fetch("http://localhost:9000/books", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(newBook)
+    body: JSON.stringify(newBook),
   })
-  .then(response => response.json())
-  .then(data => {
-    console.log('Success:', data);
-  })
-  .catch((error) => {
-    console.error('Error:', error);
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const submitForm = document.getElementById("inputBook");
+
+  submitForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    event.target.reset();
   });
-})
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   const submitForm = document.getElementById("inputBook");
-
-//   submitForm.addEventListener("submit", function (event) {
-//     event.preventDefault();
-//     addBook();
-//     event.target.reset();
-//   });
-
-//   if (isStorageExist()) {
-//     loadDataFromStorage();
-//   }
-// });
-
-// function isStorageExist() {
-//   if (typeof Storage === undefined) {
-//     alert("Browser kamu tidak mendukung local storage");
-//     return false;
-//   }
-//   return true;
-// }
+  loadBooksFromServer();
+});
 
 // function saveData() {
 //   if (isStorageExist()) {
@@ -212,139 +199,146 @@ submitForm.addEventListener('submit', function (event) {
 //   }
 // });
 
-// //fungsi membuat list buku
-// function makeBook(newBook) {
-//   const nameBook = document.createElement("h2");
-//   nameBook.innerText = newBook.name;
-//   const authorBook = document.createElement("p");
-//   authorBook.innerText = newBook.author;
-//   const summaryBook = document.createElement("p");
-//   summaryBook.innerText = newBook.summary;
-//   const yearBook = document.createElement("p");
-//   yearBook.innerText = newBook.year;
+//fungsi membuat list buku
+function makeBooks(newBook) {
+  const book = newBook.data.book;
+  const nameBook = document.createElement("h2");
+  nameBook.innerText = book.name;
+  const authorBook = document.createElement("p");
+  authorBook.innerText = book.publisher;
+  const reading = document.createElement("p");
+  reading.innerText = `Reading : ${book.reading}`;
 
-//   const textContainer = document.createElement("div");
+  const textContainer = document.createElement("div");
 
-//   textContainer.append(nameBook, authorBook, summaryBook, yearBook);
+  textContainer.append(nameBook, authorBook, reading);
 
-//   const container = document.createElement("div");
-//   container.append(textContainer);
+  const container = document.createElement("div");
+  container.append(textContainer);
 
-//   container.classList.add("item", "shadow");
+  container.classList.add("item", "shadow");
 
-//   if (newBook.isComplete) {
-//     const undoButton = document.createElement("button");
-//     undoButton.classList.add("undo-button");
-//     undoButton.addEventListener("click", function () {
-//       const popUp = document.getElementById("popup");
-//       popUp.classList.add("popup-open");
-//       textDialog.innerText = "Anda Yakin Mengembalikan Buku ke Daftar Belum DIbaca?";
+  if (newBook.reading) {
+    const undoButton = document.createElement("button");
+    undoButton.classList.add("undo-button");
+    undoButton.addEventListener("click", function () {
+      const popUp = document.getElementById("popup");
+      popUp.classList.add("popup-open");
+      textDialog.innerText = "Anda Yakin Mengembalikan Buku ke Daftar Belum DIbaca?";
 
-//       confirmButton.addEventListener("click", function () {
-//         undoBookFromCompleted(newBook.id);
-//         popUp.classList.remove("popup-open");
-//       });
-//       cancelButton.addEventListener("click", function () {
-//         popUp.classList.remove("popup-open");
-//       });
-//     });
+      confirmButton.addEventListener("click", function () {
+        undoBookFromCompleted(newBook.id);
+        popUp.classList.remove("popup-open");
+      });
+      cancelButton.addEventListener("click", function () {
+        popUp.classList.remove("popup-open");
+      });
+    });
 
-//     const trashButton = document.createElement("button");
-//     trashButton.classList.add("trash-button");
-//     trashButton.addEventListener("click", function () {
-//       const popUp = document.getElementById("popup");
-//       popUp.classList.add("popup-open");
-//       textDialog.innerText = "Anda Yakin Ingin Menghapus Buku?";
+    const trashButton = document.createElement("button");
+    trashButton.classList.add("trash-button");
+    trashButton.addEventListener("click", function () {
+      const popUp = document.getElementById("popup");
+      popUp.classList.add("popup-open");
+      textDialog.innerText = "Anda Yakin Ingin Menghapus Buku?";
 
-//       confirmButton.addEventListener("click", function () {
-//         removeBookFromCompleted(newBook.id);
-//         popUp.classList.remove("popup-open");
-//       });
-//       cancelButton.addEventListener("click", function () {
-//         popUp.classList.remove("popup-open");
-//       });
-//     });
+      confirmButton.addEventListener("click", function () {
+        removeBookFromCompleted(newBook.id);
+        popUp.classList.remove("popup-open");
+      });
+      cancelButton.addEventListener("click", function () {
+        popUp.classList.remove("popup-open");
+      });
+    });
 
-//     container.append(undoButton, trashButton);
-//   } else {
-//     const checkButton = document.createElement("button");
-//     checkButton.classList.add("check-button");
-//     checkButton.addEventListener("click", function () {
-//       const popUp = document.getElementById("popup");
-//       popUp.classList.add("popup-open");
-//       textDialog.innerText = "Anda Yakin Ingin Memindahkan Buku ke Daftar Sudah DIbaca?";
+    container.append(undoButton, trashButton);
+  } else {
+    const checkButton = document.createElement("button");
+    checkButton.classList.add("check-button");
+    checkButton.addEventListener("click", function () {
+      const popUp = document.getElementById("popup");
+      popUp.classList.add("popup-open");
+      textDialog.innerText = "Anda Yakin Ingin Memindahkan Buku ke Daftar Sudah DIbaca?";
 
-//       confirmButton.addEventListener("click", function () {
-//         addBookCompleted(newBook.id);
-//         popUp.classList.remove("popup-open");
-//       });
+      confirmButton.addEventListener("click", function () {
+        addBookCompleted(newBook.id);
+        popUp.classList.remove("popup-open");
+      });
 
-//       cancelButton.addEventListener("click", function () {
-//         popUp.classList.remove("popup-open");
-//       });
-//     });
+      cancelButton.addEventListener("click", function () {
+        popUp.classList.remove("popup-open");
+      });
+    });
 
-//     const trashButton = document.createElement("button");
-//     trashButton.classList.add("trash-button");
-//     trashButton.addEventListener("click", function () {
-//       const confirm = document.getElementById('save');
-//       confirm.classList.add('danger')
-//       const popUp = document.getElementById("popup");
-//       popUp.classList.add("popup-open");
-//       textDialog.innerText = "Anda Yakin Ingin Menghapus Buku?";
+    const trashButton = document.createElement("button");
+    trashButton.classList.add("trash-button");
+    trashButton.addEventListener("click", function () {
+      const confirm = document.getElementById("save");
+      confirm.classList.add("danger");
+      const popUp = document.getElementById("popup");
+      popUp.classList.add("popup-open");
+      textDialog.innerText = "Anda Yakin Ingin Menghapus Buku?";
 
-//       confirmButton.addEventListener("click", function () {
-//         removeBookFromunCompleted(newBook.id);
-//         popUp.classList.remove("popup-open");
-//       });
-//       cancelButton.addEventListener("click", function () {
-//         popUp.classList.remove("popup-open");
-//       });
-//     });
+      confirmButton.addEventListener("click", function () {
+        removeBookFromunCompleted(newBook.id);
+        popUp.classList.remove("popup-open");
+      });
+      cancelButton.addEventListener("click", function () {
+        popUp.classList.remove("popup-open");
+      });
+    });
 
-//     container.append(checkButton, trashButton);
-//   }
+    container.append(checkButton, trashButton);
+  }
 
-//   return container;
-// }
+  return container;
+}
 
-// function loadDataFromStorage() {
-//   const serializedData = localStorage.getItem(STORAGE_KEY);
-//   let data = JSON.parse(serializedData);
 
-//   if (data !== null) {
-//     for (const book of data) {
-//       BOOKS.push(book);
-//     }
-//   }
+let books = []; // Pastikan variabel books dideklarasikan di sini
 
-//   document.dispatchEvent(new Event(CHANGE_EVENT));
-// }
+async function loadBooksFromServer() {
+  try {
+    const response = await fetch(api_url);
+    const data = await response.json();
+    console.log("Data berhasil diload dari server", data);
 
-// //event untuk menambahkan buku ke list buku
-// document.addEventListener(CHANGE_EVENT, function () {
-//   const unReadBooksList = document.getElementById("books");
-//   const readBookList = document.getElementById("books-item");
+    // Pastikan untuk memeriksa struktur data sebelum menggunakan
+    books = data.data.books; // Simpan array buku dari data
+    document.dispatchEvent(new Event(CHANGE_EVENT)); // Trigger event untuk mengupdate UI
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
 
-//   unReadBooksList.innerHTML = "";
-//   readBookList.innerHTML = "";
+//event untuk menambahkan buku ke list buku
+document.addEventListener(CHANGE_EVENT, async function () {
+  const unReadBooksList = document.getElementById("books");
+  const readBookList = document.getElementById("books-item");
 
-//   for (const bookItem of BOOKS) {
-//     const bookList = makeBook(bookItem);
-//     if (bookItem.isComplete) {
-//       readBookList.append(bookList);
-//     } else {
-//       unReadBooksList.append(bookList);
-//     }
-//   }
-//   jumlahBuku();
-// });
-// document.addEventListener(SAVED_EVENT, function () {
-//   console.log(localStorage.getItem(STORAGE_KEY));
-// });
+  unReadBooksList.innerHTML = "";
+  readBookList.innerHTML = "";
 
-async function deleteBook(){
+  for (const bookItem of books) {
+    try {
+      const response = await fetch(`http://localhost:9000/books/${bookItem.id}`);
+      const data = await response.json();
+      console.log("Book detail:", data);
+      const book = data.data.book;
 
+      const bookList = makeBooks(data); // Use detailed book data
+      if (book.reading) {
+        readBookList.append(bookList);
+      } else {
+        unReadBooksList.append(bookList);
+      }
+    } catch (error) {
+      console.error("Error fetching book detail:", error);
+    }
+  }
+});
+
+async function deleteBook() {
   try {
     const response = await fetch("http://localhost:9000/books/jcy1xROz5m", {
       method: "DELETE",
@@ -355,7 +349,6 @@ async function deleteBook(){
     const data = await response.json();
     console.log(data);
   } catch (error) {
-    console.error(error); 
-
+    console.error(error);
   }
 }
