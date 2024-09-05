@@ -199,6 +199,120 @@ document.addEventListener("DOMContentLoaded", function () {
 //   }
 // });
 
+async function removeBook(bookId) {
+  try {
+    const response = await fetch(`http://localhost:9000/books/${bookId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    console.log("Book removed:", data);
+
+    // Setelah berhasil menghapus buku, hapus buku dari UI
+    const bookElement = document.querySelector(`.item[data-id="${bookId}"]`);
+    if (bookElement) {
+      bookElement.remove();
+    }
+    document.dispatchEvent(new Event(CHANGE_EVENT)); // Trigger event untuk mengupdate UI
+
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+function makeBooks(book) {
+  const container = document.createElement("div");
+  container.classList.add("item", "shadow");
+  container.dataset.id = book.id; // Set data-id attribute for easy selection
+
+  const nameBook = document.createElement("h2");
+  nameBook.innerText = book.name;
+  const authorBook = document.createElement("p");
+  authorBook.innerText = book.publisher;
+  const reading = document.createElement("p");
+  reading.innerText = `Reading : ${book.reading}`;
+
+  const textContainer = document.createElement("div");
+  textContainer.append(nameBook, authorBook, reading);
+  container.append(textContainer);
+
+  if (book.reading) {
+    const undoButton = document.createElement("button");
+    undoButton.classList.add("undo-button");
+    undoButton.addEventListener("click", function () {
+      const popUp = document.getElementById("popup");
+      popUp.classList.add("popup-open");
+      textDialog.innerText = "Anda Yakin Mengembalikan Buku ke Daftar Belum Dibaca?";
+
+      confirmButton.addEventListener("click", function () {
+        undoBookFromCompleted(book.id);
+        popUp.classList.remove("popup-open");
+      });
+      cancelButton.addEventListener("click", function () {
+        popUp.classList.remove("popup-open");
+      });
+    });
+
+    const trashButton = document.createElement("button");
+    trashButton.classList.add("trash-button");
+    trashButton.addEventListener("click", function () {
+      const popUp = document.getElementById("popup");
+      popUp.classList.add("popup-open");
+      textDialog.innerText = "Anda Yakin Ingin Menghapus Buku?";
+
+      confirmButton.addEventListener("click", function () {
+        removeBook(book.id);
+        popUp.classList.remove("popup-open");
+      });
+      cancelButton.addEventListener("click", function () {
+        popUp.classList.remove("popup-open");
+      });
+    });
+
+    container.append(undoButton, trashButton);
+  } else {
+    const checkButton = document.createElement("button");
+    checkButton.classList.add("check-button");
+    checkButton.addEventListener("click", function () {
+      const popUp = document.getElementById("popup");
+      popUp.classList.add("popup-open");
+      textDialog.innerText = "Anda Yakin Ingin Memindahkan Buku ke Daftar Sudah Dibaca?";
+
+      confirmButton.addEventListener("click", function () {
+        addBookCompleted(book.id);
+        popUp.classList.remove("popup-open");
+      });
+      cancelButton.addEventListener("click", function () {
+        popUp.classList.remove("popup-open");
+      });
+    });
+
+    const trashButton = document.createElement("button");
+    trashButton.classList.add("trash-button");
+    trashButton.addEventListener("click", function () {
+      const popUp = document.getElementById("popup");
+      popUp.classList.add("popup-open");
+      textDialog.innerText = "Anda Yakin Ingin Menghapus Buku?";
+
+      confirmButton.addEventListener("click", function () {
+        removeBook(book.id);
+        popUp.classList.remove("popup-open");
+      });
+      cancelButton.addEventListener("click", function () {
+        popUp.classList.remove("popup-open");
+      });
+    });
+
+    container.append(checkButton, trashButton);
+  }
+
+  return container;
+}
+
+
 //fungsi membuat list buku
 function makeBooks(newBook) {
   const book = newBook.data.book;
@@ -280,20 +394,20 @@ function makeBooks(newBook) {
       textDialog.innerText = "Anda Yakin Ingin Menghapus Buku?";
 
       confirmButton.addEventListener("click", function () {
-        removeBookFromunCompleted(newBook.id);
+        removeBook(book.id);
         popUp.classList.remove("popup-open");
       });
       cancelButton.addEventListener("click", function () {
         popUp.classList.remove("popup-open");
       });
     });
-
+    
     container.append(checkButton, trashButton);
   }
+  this.dispatchEvent(new Event(CHANGE_EVENT));
 
   return container;
 }
-
 
 let books = []; // Pastikan variabel books dideklarasikan di sini
 
